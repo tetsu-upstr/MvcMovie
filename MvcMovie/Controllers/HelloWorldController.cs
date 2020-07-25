@@ -11,19 +11,20 @@ namespace MvcMovie.Controllers
         // HTTP GETメソッド ベースURLに/HelloWorld/を追加することで呼び出される
         // GET: /HelloWorld/
 
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
 
         //
         // GET: /HelloWorld/Welcome/
         // Requires using System.Text.Encodings.Web;
-        public string Welcome(string name, int numTimes = 1)
+        public string Welcome(string name, int ID = 1)
         {
             // HtmlEncoder.Default.Encodeで 悪意のある入力 (つまり JavaScript) からアプリを保護
             // https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4 引数をパラメータとして渡す（モデルバインド）
-            return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+            //return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+            return HtmlEncoder.Default.Encode($"Hello {name}. ID: {ID}");
         }
 
     }
