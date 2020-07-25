@@ -13,6 +13,7 @@ namespace MvcMovie.Controllers
 
         public IActionResult Index()
         {
+            // 既定のビューファイル Indexが呼ばれる
             return View();
         }
 
