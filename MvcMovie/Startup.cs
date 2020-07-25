@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+// DIコンテナにデータベースコンテキストを登録
+using MvcMovie.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace MvcMovie
 {
     public class Startup
@@ -24,6 +28,13 @@ namespace MvcMovie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<MvcMovieContext>(optins =>
+                optins.UseSqlite(Configuration.GetConnectionString("MvcMovieContext")));
+
+            // DbContextOptions オブジェクトでメソッドが呼び出され、接続文字列の名前がコンテキストに渡されます。
+            // ローカル開発の場合、ASP.NET Core 構成システムが appsettings.json ファイルから接続文字列を読み取ります。
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
