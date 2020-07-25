@@ -46,6 +46,9 @@ namespace MvcMovie
 
             app.UseAuthorization();
 
+            // ルーティングの設定
+            // MVCは、着信 URLに応じてコントローラークラス(およびそれらに含まれるアクション メソッド)を呼ぶ
+            // URLセグメントを指定しない場合、下記コントローラーとメソッドが既定値で実行される
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
